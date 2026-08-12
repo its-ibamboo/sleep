@@ -1,7 +1,7 @@
 /* 夜燈 service worker
    ── 每次改完 index.html 上傳後，把下面這行的版本號 +1（v1 → v2 → v3…）
       這樣舊快取才會被清掉，使用者下次開啟就會拿到新版。 */
-const VERSION = 'v6';
+const VERSION = 'v7';
 const CACHE = 'yedeng-' + VERSION;
 
 const SHELL = [
