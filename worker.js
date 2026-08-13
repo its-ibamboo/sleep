@@ -164,6 +164,15 @@ export default {
       });
     }
 
+    /* ── 公開檔案：不含機密，放行 ──
+       PWA 的安裝判定需要讀得到 manifest 與圖示，擋掉的話
+       瀏覽器會認定「不可安裝」，加到桌面的按鈕就不會出現。 */
+    const PUBLIC = ['/manifest.json', '/icon-192.png', '/icon-512.png',
+                    '/icon-maskable-512.png', '/apple-touch-icon.png', '/favicon.ico', '/sw.js'];
+    if (PUBLIC.includes(url.pathname)) {
+      return env.ASSETS.fetch(request);
+    }
+
     /* ── 其餘所有請求都要通行證 ── */
     const valid = await checkToken(getCookie(request, COOKIE), env.AUTH_SECRET);
     if (!valid) {
