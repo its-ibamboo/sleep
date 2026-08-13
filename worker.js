@@ -1,4 +1,4 @@
-/* 夜燈 — 伺服器端登入 
+/* 夜燈 — 伺服器端登入
  * ────────────────────────────────────────────────────────
  * 這支程式跑在 Cloudflare 上，不在使用者手機裡，所以改不了。
  *
@@ -85,14 +85,6 @@ input:focus{border-color:#d08a52}
 button{width:100%;margin-top:12px;background:#d08a52;color:#120c07;border:none;border-radius:3px;
   padding:15px;font-size:16px;letter-spacing:.1em;font-weight:500}
 .err{margin-top:14px;font-size:13px;color:#c96a4a;min-height:1.3em}
-.ask{margin-top:34px;padding-top:26px;border-top:1px solid #26201c}
-.askT{font-family:"Noto Serif TC","Songti TC",serif;font-size:16px;letter-spacing:.1em;
-  color:#eab578;margin-bottom:9px}
-.askP{font-size:12.5px;color:#8d7f74;line-height:1.9;margin-bottom:16px}
-.line{display:flex;align-items:center;justify-content:center;gap:8px;
-  border:1px solid #06C755;border-radius:3px;padding:14px;
-  color:#06C755;text-decoration:none;font-size:14.5px;letter-spacing:.06em}
-.line:active{background:rgba(6,199,85,.10)}
 </style></head><body>
 <div class="box">
   <svg width="58" height="58" viewBox="0 0 52 52" fill="none">
@@ -105,19 +97,11 @@ button{width:100%;margin-top:12px;background:#d08a52;color:#120c07;border:none;b
     <rect width="52" height="52" fill="url(#g)" mask="url(#m)"/>
   </svg>
   <h1>夜　燈</h1>
-  <p>這個版本需要密碼才能進入。<br>輸入一次就好，之後會自動記住。</p>
+  <p>輸入密碼 1234<br>輸入一次就好，之後會自動記住。</p>
   <input id="pw" type="password" inputmode="text" placeholder="密碼" autocomplete="current-password">
   <button id="go">進入</button>
   <div class="err" id="err"></div>
 
-  <div class="ask">
-    <div class="askT">還沒有密碼？</div>
-    <p class="askP">加我的 LINE 跟我說一聲，我把密碼給你。<br>不用付費，也不會有推銷訊息。</p>
-    <a class="line" href="https://line.me/R/ti/p/@629buntc" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 12a2 2 0 0 1-2 2H7l-4 3V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-      加 LINE 索取密碼
-    </a>
-  </div>
 </div>
 <script>
 var pw=document.getElementById('pw'),go=document.getElementById('go'),err=document.getElementById('err');
