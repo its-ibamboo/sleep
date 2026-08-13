@@ -97,7 +97,7 @@ button{width:100%;margin-top:12px;background:#d08a52;color:#120c07;border:none;b
     <rect width="52" height="52" fill="url(#g)" mask="url(#m)"/>
   </svg>
   <h1>夜　燈</h1>
-  <p>輸入一次就好，之後會自動記住。</p>
+  <p>輸入密碼 1234<br>輸入一次就好，之後會自動記住。</p>
   <input id="pw" type="password" inputmode="text" placeholder="密碼" autocomplete="current-password">
   <button id="go">進入</button>
   <div class="err" id="err"></div>
