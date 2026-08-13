@@ -1,7 +1,7 @@
 /* 夜燈 service worker
    ── 版本號規則：只要換過 audio/ 裡的音檔或圖示，就把下面的版本號 +1，
       舊快取才會被清掉。只改 index.html 的話不用動（HTML 走 network-first）。 */
-const VERSION = 'v9';
+const VERSION = 'v10';
 const CACHE = 'yedeng-' + VERSION;
 
 const SHELL = [
@@ -34,6 +34,8 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
+  /* 登入相關的請求一律直接走網路，不進快取 */
+  if (new URL(req.url).pathname.startsWith('/api/')) return;
 
   const isDoc = req.mode === 'navigate' ||
                 (req.headers.get('accept') || '').includes('text/html');
@@ -42,8 +44,10 @@ self.addEventListener('fetch', e => {
     e.respondWith(
       fetch(req)
         .then(res => {
-          const copy = res.clone();
-          caches.open(CACHE).then(c => c.put(req, copy));
+          if (res.status === 200) {          /* 未登入會拿到 401，不能存 */
+            const copy = res.clone();
+            caches.open(CACHE).then(c => c.put(req, copy));
+          }
           return res;
         })
         .catch(() => caches.match(req).then(r => r || caches.match('./')))

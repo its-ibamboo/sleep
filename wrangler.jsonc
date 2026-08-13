@@ -1,8 +1,13 @@
 {
   "name": "sleep",
+  "main": "worker.js",
   "compatibility_date": "2025-04-01",
   "workers_dev": true,
   "assets": {
-    "directory": "./"
+    "directory": "./",
+    "binding": "ASSETS",
+    // 關鍵：讓 worker.js 先跑，檢查完通行證才決定要不要給檔案。
+    // 少了這行，Cloudflare 會直接把檔案送出去，登入形同虛設。
+    "run_worker_first": true
   }
 }
